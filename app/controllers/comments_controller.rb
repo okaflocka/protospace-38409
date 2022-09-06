@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
       redirect_to prototype_path(params[:prototype_id])
     else
       @prototype = @comment.prototype
+      @comments = @prototype.comments.includes(:user)
       render template: "prototypes/show"
     end
   end
